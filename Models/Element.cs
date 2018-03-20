@@ -7,88 +7,38 @@ namespace Led.Models
 {
     public class Element
     {
-        public string Name { get; private set; }
-        public string Lable { get; private set; }
-        public List<ElementRange> Ranges { get; private set; }
+        public string Name { get; set; }
+        public string Label { get; set; }
+        public IList<ElementRange> Ranges { get; set; }
+        public string UnitMeasure { get; set; }
 
         public double Value { get; set; }
 
-        public bool Enable { get; set; }
-
         #region ctor
-        public Element(string name)
+        public Element(string name, String label, IList<ElementRange> ranges, string unitMeasure = "")
         {
             Name = name;
-            Enable = false;
+            Label = label;
+            Ranges = ranges;
+            UnitMeasure = unitMeasure;
         }
 
-        public Element(string name, List<ElementRange> ranges, string label)
-        {
-            Name = name;
-            Ranges = ranges;
-            Lable = label;
-            Enable = true;
-        }
         #endregion
 
-        public void IfEnamble()
-        {
-            if (Enable)
-            {
-                return;
-            }
-            else
-            {
-                throw new Exception();
-            }
-        }
 
-        public double GetResult()
-        {
-            IfEnamble();
-                double result = 0;
 
-                double cefficient = GetCoefficient();
-                result = Value * cefficient;
+        public double GetResult() => Value * GetCoefficient();
 
-                return result;
-        }
 
+        public int GetMin() => Ranges.Min(x => x.Min); 
+
+        public int GetMax() => Ranges.Max(x => x.Max);
 
         public double GetCoefficient()
         {
-            IfEnamble();
-            double coefficient = 0;
-            foreach (ElementRange er in Ranges)
-            {
-                if ( (er.Min <= Value) & (Value <= er.Max) )
-                {
-                    coefficient = er.Coefficient;
-                    break;
-                }
-            }
-
-            return coefficient;
-        }
-
-        public int GetMin()
-        {
-            int min = 10000;
-            foreach(ElementRange er in Ranges)
-            {
-                min = er.Min < min ? er.Min : min;
-            }
-            return min;
-        }
-
-        public int GetMax()
-        {
-            int max = 0;
-            foreach (ElementRange er in Ranges)
-            {
-                max = er.Max > max ? er.Max : max;
-            }
-            return max;
+            //IfEnamble();
+            ElementRange er = Ranges.First(x => (x.Min <= Value) & (Value <= x.Max));
+            return er.ElementRangeCoefficient.Coefficient;
         }
     }
 }

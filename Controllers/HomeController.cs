@@ -14,9 +14,9 @@ namespace Led.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            Dictionary<string, int> elements = GetElements();
+            Dictionary<string, int> elements = ElementsMapper.GetElements();
             VideoCalculator videoCalculator = new VideoCalculator("", priceOneSecond, elements);
-            GetViewBagCalculation(videoCalculator.Elements);
+            SetViewBagData(videoCalculator.Elements);
 
             ViewData["summ"] = 0;
 
@@ -26,40 +26,25 @@ namespace Led.Controllers
         [HttpPost]
         public ActionResult Index(string formula, int durationVideo, int durationPeriod, int numberScreens, int numberOutputsIn6Min)
         {
-            Dictionary<string, int> elements = GetElements(formula, durationVideo, durationPeriod, numberScreens, numberOutputsIn6Min);
+            Dictionary<string, int> elements = ElementsMapper.GetElements(formula, durationVideo, durationPeriod, numberScreens, numberOutputsIn6Min);
 
             VideoCalculator videoCalculator = new VideoCalculator(formula, priceOneSecond, elements);
 
-            GetViewBagCalculation(videoCalculator.Elements);
+            SetViewBagData(videoCalculator.Elements);
 
             ViewData["summ"] = videoCalculator.Calculate();
             return View();
         }
 
-        private Dictionary<string, int> GetElements(
-            string formula = "", 
-            int durationVideo = 25, 
-            int durationPeriod = 60, 
-            int numberScreens = 4, 
-            int numberOutputsIn6Min  = 1)
-        {
-            Dictionary<string, int> elements = new Dictionary<string, int>
-            {
-                { "durationVideo", durationVideo },
-                { "durationPeriod", durationPeriod },
-                { "numberScreens", numberScreens },
-                { "numberOutputsIn6Min", numberOutputsIn6Min }
-            };
-            return elements;
-        }
 
-        private void GetViewBagCalculation(List<Element> elements)
+
+        private void SetViewBagData(List<Element> elements)
         {
             ViewBag.Elements = new Element[] {
-                elements.Find(x => x.Name.Contains("durationVideo")),
-                elements.Find(x => x.Name.Contains("durationPeriod")),
-                elements.Find(x => x.Name.Contains("numberScreens")),
-                elements.Find(x => x.Name.Contains("numberOutputsIn6Min"))
+                elements.Find(x => x.Name.Contains(ElementsMapper.DURATION_VIDEO)),
+                elements.Find(x => x.Name.Contains(ElementsMapper.DURATIO_PERIOD)),
+                elements.Find(x => x.Name.Contains(ElementsMapper.NUMBER_SCREENS)),
+                elements.Find(x => x.Name.Contains(ElementsMapper.NUMBER_OUTPUTS_IN_6_MIN))
             };
 
             ViewBag.formula = "";

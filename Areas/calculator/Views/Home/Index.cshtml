@@ -1,22 +1,16 @@
-﻿@{
-    /**/
-
-    ViewBag.Title = "Home Page";
-}
-<style>
-</style>
+﻿
 
 @using (Html.BeginForm("Index", "Home", FormMethod.Post))
 {
     <br />
 
-@helper ViewElements(Led.Models.Element[] elements)
+    @helper ViewElements(Led.Models.Element[] elements)
         {
             foreach (Led.Models.Element element in elements)
             {
                 <fieldset>
                     <legend>
-                        @element.Label
+                        @element.Lable
                         <input type="number" name="@element.Name" id="@element.Name"
                                min="@element.GetMin()"
                                max="@element.GetMax()"
@@ -40,7 +34,7 @@
 
     @ViewElements(ViewBag.Elements)
 
-    
+
 
     <br />
     <input type="submit" id="submit" value="Рассчитать" />

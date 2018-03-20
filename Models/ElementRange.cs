@@ -7,16 +7,25 @@ namespace Led.Models
 {
     public class ElementRange
     {
-        public int Min { get; private set; }
-        public int Max { get; private set; }
-        public double Coefficient { get; private set; }
-        public string StringForHtml { get; set; }
+        public int Id { get; set; }
 
-        public ElementRange(int min, int max, double coefficient, string stringForHtml)
+        public int Min { get; set; }
+        public int Max { get; set; }
+
+        public int ElementRangeCoefficientId { get; set; }
+        public ElementRangeCoefficient ElementRangeCoefficient { get; set; }
+
+        public string StringForHtml {
+            get { return $"от {Min} до {Max} "; }
+            private set { }
+        }
+
+        public ElementRange( int min, int max, double coefficient, string stringForHtml)
         {
-            Min = min;
-            Max = max;
-            Coefficient = coefficient;
+            this.Min = min;
+            this.Max = max;
+            this.ElementRangeCoefficient = new ElementRangeCoefficient() { Coefficient = coefficient };
+            this.StringForHtml = stringForHtml;
         }
     }
 }
