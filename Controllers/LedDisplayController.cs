@@ -19,10 +19,15 @@ namespace Led.Controllers
         }
 
         // GET: LedDisplay
-        public ActionResult Index(int? ownerId)
+        public ActionResult Index(int ownerId = 0)
         {
-            IQueryable<LedDisplay> ledDisplays = db.LedDisplays.Include(p => p.Owner);
-            if (ownerId != null && ownerId != 0)
+            ViewBag.OwnerId = ownerId;
+            IQueryable<LedDisplay> ledDisplays 
+                = db.LedDisplays
+                .Include(p => p.Owner)
+                .Include(p => p.Address)
+                .Include(p => p.Address.City);
+            if (ownerId > 0)
             {
                 ledDisplays = ledDisplays.Where(p => p.OwnerId == ownerId);
             }
@@ -32,17 +37,24 @@ namespace Led.Controllers
         // GET: LedDisplay/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == 0)
+            if (id == 0 || id == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
-            var LedDisplays = db.LedDisplays.Find(id);
+            var ledDisplays
+                = db.LedDisplays
+                .Include(ow => ow.Owner)
+                .Include(ad => ad.Address)
+                .Include(ci => ci.Address.City)
+                .Include(im => im.Image);
 
-            if (LedDisplays != null)
+            LedDisplay ledDisplay = ledDisplays.First(ld => ld.Id == id);
+
+            if (ledDisplay != null)
             {
                 // TODO: Получить количество роликов
 
-                return View(LedDisplays);
+                return View(ledDisplay);
             }
             else
             {
@@ -50,27 +62,60 @@ namespace Led.Controllers
             }
         }
 
-        // GET: LedDisplay/Create
-        public ActionResult Create()
+        // Заполняем ViewBag для метода Create
+        private void Init_ViewBag_for_Create()
         {
+            SelectList owners = new SelectList(db.Owners, "Id", "Name");
+            ViewBag.Owners = owners;
+
+            SelectList cities = new SelectList(db.Cities, "Id", "Name");
+            ViewBag.Cities = cities;
+        }
+
+        // GET: LedDisplay/Create
+        public ActionResult Create(int ownerId = 0)
+        {
+            Init_ViewBag_for_Create();
+
+            if (ownerId > 0)
+            {
+                Owner owner = db.Owners.FirstOrDefault(o => o.Id == ownerId);
+                LedDisplay ledDisplay = new LedDisplay() { Owner = owner };
+                return View(ledDisplay);
+            }
             return View();
         }
 
         // POST: LedDisplay/Create
         [HttpPost]
-        public ActionResult Create(LedDisplay ledDisplay)
+        public ActionResult Create(LedDisplay ledDisplay, int Owner_Id, int City_Id, int Image_Id = 1)
         {
-            try
-            {
-                db.LedDisplays.Add(ledDisplay);
-                db.SaveChanges();
+            Init_ViewBag_for_Create();
 
-                return RedirectToAction("Index");
-            }
-            catch
+            ledDisplay.Owner = db.Owners.FirstOrDefault(o => o.Id == Owner_Id);
+            ledDisplay.Address.City = db.Cities.FirstOrDefault(c => c.Id == City_Id);
+
+            if (ModelState.IsValid)
             {
-                return View();
+                //try
+                {
+                    db.Addresses.Add(ledDisplay.Address);
+                    db.SaveChanges();
+
+                    ledDisplay.Image = db.Images.FirstOrDefault(i => i.Id == Image_Id);
+
+                    db.LedDisplays.Add(ledDisplay);
+                    db.SaveChanges();
+
+                    
+                }
+                //catch
+                {
+                    //return View();
+                }
+                return RedirectToAction("Index", new { ownerId = Owner_Id });
             }
+            return View(ledDisplay);
         }
 
         // GET: LedDisplay/Edit/5

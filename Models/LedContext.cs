@@ -8,7 +8,13 @@ namespace Led.Models
 {
     public class LedContext: DbContext
     {
+        public LedContext() :base("LedContext")
+        {
+
+        }
+
         public DbSet<City> Cities { get; set; }
+        public DbSet<Address> Addresses { get; set; }
 
         public DbSet<Owner> Owners { get; set; }
         public DbSet<LedDisplay> LedDisplays { get; set; }
@@ -18,7 +24,8 @@ namespace Led.Models
         public DbSet<Advertiser> Advertisers { get; set; }
         public DbSet<PromotionalVideo> PromotionalVideos { get; set; }
         public DbSet<PromotionalVideoProperty> PromotionalVideoProperties { get; set; }
-        
+
+        public DbSet<Image> Images { get; set; }
     }
 
     public class LedDbInitialaizer : DropCreateDatabaseAlways<LedContext>
@@ -72,7 +79,7 @@ namespace Led.Models
             LedDisplay eCity_LedDisplay = db.LedDisplays.Add(new LedDisplay { Address = address4, Owner = mogilev_owner });
             LedDisplay preston_LedDisplay = db.LedDisplays.Add(new LedDisplay { Address = address5, Owner = mogilev_owner });
 
-            db.LedDisplays.Add(new LedDisplay { Address = address1, Owner = minsk_owner });
+            db.LedDisplays.Add(new LedDisplay { Address = address1, Owner = minsk_owner, Image = new Image() { file_Name = "img1.jpg" } } );
             db.LedDisplays.Add(new LedDisplay { Address = address2, Owner = minsk_owner });
             db.LedDisplays.Add(new LedDisplay { Address = address3, Owner = minsk_owner });
 

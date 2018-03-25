@@ -153,6 +153,7 @@
     <Compile Include="Areas\calculator\Controllers\CalculatorController.cs" />
     <Compile Include="Controllers\AdvertiserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\LedDisplayController.cs" />
     <Compile Include="Controllers\OwnerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -164,6 +165,7 @@
     <Compile Include="Models\Element.cs" />
     <Compile Include="Models\ElementRange.cs" />
     <Compile Include="Models\ElementRangeCoefficient.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\LedContext.cs" />
     <Compile Include="Models\LedDisplay.cs" />
     <Compile Include="Models\LedDisplayProperty.cs" />
@@ -183,6 +185,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\02.jpg" />
+    <Content Include="images\01.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -205,6 +209,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="images\01.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -230,10 +235,10 @@
     <Content Include="Views\Advertiser\Edit.cshtml" />
     <Content Include="Views\Advertiser\Delete.cshtml" />
     <Content Include="Views\LedDisplay\Index.cshtml" />
-    <Content Include="Views\LedDisplay\Details.cshtml" />
     <Content Include="Views\LedDisplay\Create.cshtml" />
     <Content Include="Views\LedDisplay\Edit.cshtml" />
     <Content Include="Views\LedDisplay\Delete.cshtml" />
+    <Content Include="Views\LedDisplay\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -241,6 +246,7 @@
     <Folder Include="Areas\admin\Models\" />
     <Folder Include="Areas\admin\Views\Shared\" />
     <Folder Include="Areas\calculator\Models\" />
+    <Folder Include="Views\Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

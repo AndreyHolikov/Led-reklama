@@ -24,6 +24,10 @@ namespace Led.Models
         [Required]
         public Address Address { get; set; }
 
+        public int ImageId { get; set; }
+        [Display(Name = "Картинка")]
+        [ForeignKey("ImageId")]
+        public Image Image { get; set; }
 
 
         public virtual ICollection<LedDisplayPropertyValue> LedDisplayPropertyValues { get; set; }

@@ -1,21 +1,27 @@
 ﻿@model IEnumerable<Led.Models.LedDisplay>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Экраны";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Добавить экран", "Create", new {  ownerId = ViewBag.OwnerId })
 </p>
 <table class="table">
     <tr>
         <th>
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address.City)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Address)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerId)
+            @Html.DisplayNameFor(model => model.Owner)
         </th>
         <th></th>
     </tr>
@@ -23,15 +29,20 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Address)
+            @Html.ActionLink("Подробнее", "Details", new { id = item.Id })
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.OwnerId)
+            @Html.DisplayFor(modelItem => item.Address.City.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.DisplayFor(modelItem => item.Address.FullAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owner.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
         </td>
     </tr>
 }

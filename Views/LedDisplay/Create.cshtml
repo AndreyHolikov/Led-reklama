@@ -6,38 +6,146 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>LedDisplay</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.OwnerId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.OwnerId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.OwnerId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-horizontal">
+    <h4>LedDisplay</h4>
+    <hr />
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="img_wrapper lazy_load">
+        <input id="Image_Id" name="Image_Id" type="hidden" value="@*@model=>model.ImageId*@" />
+        <img id="imgResult" rel="prefetch prerender"
+             src="~/images/01.jpg"
+             data-src="@*@model=>model.Image.file_Name*@"
+             alt="" /> <!--src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"-->
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OwnerId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Owner_Id", ViewBag.Owners as SelectList)
+            @*, new { htmlAttributes = new { @class = "form-control" })*@
+            @Html.ValidationMessageFor(model => model.OwnerId, "", new { @class = "text-danger" })
         </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <div class="form-group">
+        @Html.LabelFor(model => model.Address.City, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("City_Id", ViewBag.Cities as SelectList)
+            @*, new { htmlAttributes = new { @class = "form-control" })*@
+            @Html.ValidationMessageFor(model => model.Address.City, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Address.FullAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Address.FullAddress, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Address.FullAddress, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <h3>Выберите файл для загрузки</h3>
+
+    <div>
+        <input type="file" name="upload" id="uploadFile" /><br />
+        <button id="submit">Загрузить</button>
+    </div>
+
+    @section scripts{
+        <script type="text/javascript">
+
+    $('#submit').on('click', function (e) {
+        e.preventDefault();
+        var files = document.getElementById('uploadFile').files;
+        if (files.length > 0) {
+            if (window.FormData !== undefined) {
+                var data = new FormData();
+                for (var x = 0; x < files.length; x++) {
+                    data.append("file" + x, files[x]);
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Upload", "Image")',
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (result) {
+                        var imgResult = $('#imgResult'); // получаем нужный элемент
+                        var Image_Id = $('#Image_Id'); // получаем нужный элемент
+                        for (var i = 0; i < result.length; i++) {
+                            imgResult[i].src = result[i].file_Name;
+                            Image_Id[i].value = result[i].Id;
+                            //указываем путь к изображению, которое нужно подгрузить
+                            $.preloadImages(result[i]);
+                        }
+
+
+
+                        //lazyLoad();
+
+                        //var results = $('#imageResults'); // получаем нужный элемент
+                        //results.empty(); //очищаем элемент
+                        //for (var i = 0; i < data.length; i++) {
+                        //    results.append(data[i] + '<br/>'); // добавляем данные в список
+                        //    //<img src=\"~/Images/{fileName}\"/>
+                        //    //results.append('<li>' + data[i].Name + '</li>'); // добавляем данные в список
+                        //}
+                        //results.append(result);
+
+
+
+                    },
+                    error: function (xhr, status, p3) {
+                        alert(xhr.responseText);
+                    }
+                });
+            } else {
+                alert("Браузер не поддерживает загрузку файлов HTML5!");
+            }
+        }
+            });
+
+            function lazyLoad() {
+                var $images = $('.lazy_load');
+
+                $images.each(function () {
+                    //var $img = $(this),
+                    //    src = $img.attr('data-src');
+
+                    $img
+                        .on('load', imgLoaded($img[0]))
+                        .attr('src', src);
+                });
+            };
+
+            //$(window).load(function () {
+            //    lazyLoad();
+            //};
+        </script>
+    }
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
 </div>
+    }
+
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

@@ -9,21 +9,24 @@
 <div>
     <h4>LedDisplay</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <div class="col-md-2">
+        <img src="@Html.DisplayFor(model => model.Image.file_Name)" />
+    </div>
+    <dl class="col-md-10 dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner.Name)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Address)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OwnerId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OwnerId)
+            @Html.DisplayFor(model => model.Address.FullAddress)
         </dd>
 
     </dl>
