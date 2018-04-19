@@ -1,0 +1,14 @@
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.DAL\obj\Debug\Led.DAL.csprojResolveAssemblyReference.cache
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.DAL\obj\Debug\Led.DAL.csproj.CoreCompileInputs.cache
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.DAL\bin\Debug\Led.DAL.dll.config
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.DAL\bin\Debug\Led.DAL.dll
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.DAL\bin\Debug\Led.DAL.pdb
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.DAL\bin\Debug\EntityFramework.dll
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.DAL\bin\Debug\EntityFramework.SqlServer.dll
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.DAL\bin\Debug\EntityFramework.xml
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.DAL\bin\Debug\EntityFramework.SqlServer.xml
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.DAL\bin\Debug\ru\EntityFramework.resources.dll
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.DAL\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.DAL\obj\Debug\Led.DAL.csproj.CopyComplete
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.DAL\obj\Debug\Led.DAL.dll
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.DAL\obj\Debug\Led.DAL.pdb

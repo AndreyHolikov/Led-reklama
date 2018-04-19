@@ -1,0 +1,67 @@
+﻿@model Led.Models.Db.Calculator
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <br />
+    @helper ViewElements(
+            ICollection<Led.Models.Db.OfferVideoProperty> OfferVideoPropertyies,
+            ICollection<Led.Models.Db.Display> Displays)
+        {
+            <ul>
+                @if (Displays.Count > 0)
+                {
+                    foreach (var Display in Displays)
+                    {
+                        <li>
+                            @Html.CheckBox(Display.Name) @Html.Label(Display.Name)
+                        </li>
+                    }
+                }
+            </ul>
+
+            if (OfferVideoPropertyies.Count > 0)
+            {
+                foreach (var property in OfferVideoPropertyies)
+                {
+                    <fieldset>
+                        <legend>
+                            @property.Label
+                            <input type="number" name="@property.Name" id="@property.Name"
+                                   min="@property.Min"
+                                   max="@property.Max"
+                                   value="@property.Min"
+                                   onchange="document.getElementById('@property.Name-Range').value = this.value;" />
+                        </legend>
+                        <p>
+                            <span id="@property.Name-Min">@property.Min</span>
+                            <input id="@property.Name-Range" type="range"
+                                   min="@property.Min"
+                                   max="@property.Max"
+                                   value="@property.Min"
+                                   onchange="document.getElementById('@property.Name').value = this.value;">
+                            <span id="@property.Name-Max">@property.Max</span>
+                        </p>
+                    </fieldset>
+                }
+            }
+}
+
+    @ViewElements(Model.OfferVideoPropertyies, Model.Displays)
+    <br />
+    <input type="submit" id="submit" value="Рассчитать" />
+    <br />
+}
+<fieldset>
+    <legend>Итого:@ViewData["summ"]</legend>
+    <p>
+        Формула: <strong>@Html.Label("formula", ViewData["formula"]) </strong>
+    </p>
+</fieldset>
+<hr />
+
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

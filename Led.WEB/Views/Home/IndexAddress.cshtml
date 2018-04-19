@@ -1,0 +1,8 @@
+﻿<ul>
+    @foreach(Led.WEB.Models.AddressViewModel address in ViewBag.Addresses)
+    {
+        <li>
+            @address.FullAddress
+        </li>
+    }
+</ul>

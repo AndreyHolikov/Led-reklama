@@ -1,0 +1,63 @@
+﻿
+<h2>Панель администратора</h2>
+<table class="table table-hover">
+    <tbody>
+        <tr>
+            <td>
+                Собственники экранов
+            </td>
+            <td>
+                @Html.ActionLink(linkText: "Список", actionName: "Index", routeValues: new { area = "Admin", controller = "Owner" })
+            </td>
+            <td>
+                @Html.ActionLink(linkText: "Добавить", actionName: "Create", routeValues: new { area = "Admin", controller = "Owner" })
+            </td>
+        </tr>
+        <tr>
+            <td>Экраны</td>
+            <td>
+                @Html.ActionLink(linkText: "Список", actionName: "Index", routeValues: new { area = "Admin", controller = "Display" })
+            </td>
+            <td>
+                @Html.ActionLink(linkText: "Добавить", actionName: "Create", routeValues: new { area = "Admin", controller = "Display" })
+            </td>
+        </tr>
+        <tr>
+            <td>Характеристики для роликов (калькулятора)</td>
+            <td>
+                @Html.ActionLink(linkText: "Список", actionName: "Index", routeValues: new { area = "Admin", controller = "OfferVideoProperty" })
+            </td>
+            <td>
+                @Html.ActionLink(linkText: "Добавить", actionName: "Create", routeValues: new { area = "Admin", controller = "OfferVideoProperty" })
+            </td>
+        </tr>
+        <tr>
+            <td>Калькуляторы</td>
+            <td>
+                @Html.ActionLink(linkText: "Список", actionName: "Index", routeValues: new { area = "Admin", controller = "Calculator" })
+            </td>
+            <td>
+                @Html.ActionLink(linkText: "Добавить", actionName: "Create", routeValues: new { area = "Admin", controller = "Calculator" })
+            </td>
+        </tr>
+        <tr>
+            <td>Рекламодатели</td>
+            <td>
+                @Html.ActionLink(linkText: "Список", actionName: "Index", routeValues: new { area = "Admin", controller = "Advertiser" })
+            </td>
+            <td>
+                @Html.ActionLink(linkText: "Добавить", actionName: "Create", routeValues: new { area = "Admin", controller = "Advertiser" })
+            </td>
+        </tr>
+        <tr>
+            <td>Ролики</td>
+            <td>
+                @Html.ActionLink(linkText: "Список", actionName: "Index", routeValues: new { area = "Admin", controller = "PromotionalVideo" })
+            </td>
+            <td>
+                @Html.ActionLink(linkText: "Добавить", actionName: "Create", routeValues: new { area = "Admin", controller = "PromotionalVideo" })
+            </td>
+        </tr>
+    </tbody>
+</table>
+

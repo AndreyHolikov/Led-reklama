@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Led.WEB.Models.AddressViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="col-md-12 col-sm-12 col-xs-12 section-title">
+        <div style="color:#e74c3c; text-align:center;">
+            <h1>@Html.ActionLink("Каталог экранов", "FrontendIndex", new { area = "", controller = "Display" })</h1>
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 section-text">
+        <div class="col-md-4 col-sm-12 col-xs-12 section-margin">
+
+            @{Html.RenderPartial("~/Areas/admin/Views/Shared/PanelAdmin.cshtml");}
+
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12 section-margin">
+            <ul>
+                @foreach (Led.WEB.Models.DisplayViewModel display in ViewBag.Displays)
+                {
+                    <li>@display.Label</li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12 section-margin">
+            @*{Html.RenderPartial("~/Views/Calculator/Calc-1.cshtml", ViewData["Calculator"]);}*@
+        </div>
+    </div>
+</div>

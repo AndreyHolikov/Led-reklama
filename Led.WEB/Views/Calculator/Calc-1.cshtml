@@ -1,0 +1,95 @@
+﻿@model Led.WEB.Models.CalculatorViewModel
+
+<div id="app">
+    @using (Ajax.BeginForm(actionName: "Equals", controllerName: "Calculator",
+                ajaxOptions: new AjaxOptions { UpdateTargetId = "EqualsId" }))
+    {
+        <br />
+
+        @helper ViewElements(ICollection<Led.WEB.Models.OfferVideoPropertyViewModel> OfferVideoPropertyies, 
+    ICollection<Led.WEB.Models.DisplayViewModel> Displays)
+            {
+                <ul class="list-group list-group-flush">
+                    @if (Displays.Count > 0)
+                    {
+                        foreach (var Display in Displays)
+                        {
+                            <li class="list-group-item">
+                                <!--<input id="@Display.Name" name="display.@Display.Name" type="checkbox" value="false"  />
+                                <input name="display.@Display.Name" type="hidden" value="false" v-on:input="icity" />-->
+
+                                @Html.CheckBox("display."+Display.Name, htmlAttributes: new { id = Display.Name })
+
+                                @Html.Label(Display.Label)
+                            </li>
+                        }
+                    }
+                </ul>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        @if (OfferVideoPropertyies.Count > 0)
+                        {
+                            foreach (var property in OfferVideoPropertyies)
+                            {
+                                <fieldset>
+                                    <legend class="text-center">
+                                        @if (property.Visible)
+                                        {
+                                        @property.Label
+                                        <div>
+                                            <div style="width:10%; float: left;" class="text-left">@property.Min</div>
+                                            <div style="width:80%; float: left;">
+                                                <input type="range" id="@property.Name-Range"
+                                                       min="@property.Min" max="@property.Max" value="@property.DefaultValue" 
+                                                       onchange="document.getElementById('@property.Name').value = this.value;">
+                                            </div>
+                                            <div style="width:10%; float: left;" class="text-left">@property.Max</div>
+                                        </div>
+                                        }
+
+                                        <input type="hidden" name="videoProperty.@property.Name" id="@property.Name" class="form-control"
+                                               min="@property.Min" max="@property.Max" value="@property.DefaultValue"
+                                               onchange="document.getElementById('@property.Name-Range').value = this.value;" />
+                                    </legend>
+                                </fieldset>
+                            }
+                        }
+                    </div>
+                </div>
+                <input type="submit" id="calculate" value="Рассчитать" class="btn btn-primary btn-sm btn-block" /> <br />
+            }
+
+        @ViewElements(Model.OfferVideoProperties, Model.Displays)
+    }
+    <fieldset>
+        <legend id="EqualsId">Итого:{{equals}} руб.</legend>
+        <p>
+            Формула: <strong>@Html.Label("formula", ViewData["formula"]) </strong>
+        </p>
+    </fieldset>
+</div>
+
+        <script type="text/javascript">
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    selectedUsers: [],
+                    city: [],
+                    equals: '0',
+                    message: 'Hello Vue!',
+                    text: '',
+                    link: 'https://google.com'
+                },
+                methods: {
+                    setMessage: function (event) {
+                        this.message = event.target.value;
+                    },
+
+                    icity: function (event) {
+                        this.city += event.target.name;
+                    }
+                }
+            });
+            </script>
+<hr />
