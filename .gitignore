@@ -1,0 +1,16 @@
+images/*
+Led.BLL/bin/*
+Led.DAL/bin/*
+Led.Tests/bin/*
+Led.WEB/bin/*
+bin/*
+
+Led.BLL/bin/Debug/*
+Led.DAL/bin/Debug/*
+Led.Tests/bin/Debug/*
+Led.WEB/bin/Debug/*
+
+Led.BLL/bin/Release/*
+Led.DAL/bin/Release/*
+Led.Tests/bin/Release/*
+Led.WEB/bin/Release/*
