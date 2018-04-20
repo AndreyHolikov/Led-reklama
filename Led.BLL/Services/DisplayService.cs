@@ -15,19 +15,22 @@ namespace Led.BLL.Services
     public class DisplayService : IDisplayService
     {
         private IUnitOfWork Database { get; set; }
+        private IMapper mapper { get; set; }
 
-        public DisplayService(IUnitOfWork uow)
+        public DisplayService(IUnitOfWork uow, IMapper mapper)
         {
             Database = uow;
+            this.mapper = mapper;
+            //Mapper.Initialize(cfg => cfg.CreateMap<Display, DisplayDTO>());
         }
 
         public IEnumerable<DisplayDTO> GetAll()
         {
             // Настройка AutoMapper
-            Mapper.Initialize(cfg => cfg.CreateMap<Display, DisplayDTO>());
+            //Mapper.Initialize(cfg => cfg.CreateMap<Display, DisplayDTO>());
             // Выполняем сопоставление
             // применяем автомаппер для проекции одной коллекции на другую
-            return Mapper.Map<IEnumerable<Display>, List<DisplayDTO>>(Database.Displays.GetAll());
+            return mapper.Map<IEnumerable<Display>, List<DisplayDTO>>(Database.Displays.GetAll());
         }
 
         public DisplayDTO Get(int? id)

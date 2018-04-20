@@ -31,11 +31,13 @@ namespace Led.WEB.Controllers
             this.unitOfWork = (EFUnitOfWork)unitOfWork;
         }
 
-        IAddressService addressService;
-        public HomeController(IAddressService serv)
-        {
-            addressService = serv;
+        private IDisplayService displayService;
+        private IMapper mapper { get; set; }
 
+        public HomeController(IDisplayService serv, IMapper mapper)
+        {
+            displayService = serv;
+            this.mapper = mapper;
             //Mapper.Initialize(cfg =>
             //{
             //    cfg.CreateMap<DisplayDTO, DisplayViewModel>();
@@ -60,11 +62,11 @@ namespace Led.WEB.Controllers
             //}
             //return View("IndexAddress");
 
-            using (IDisplayService displayService = new DisplayService(unitOfWork))
-            {
+            //using (IDisplayService displayService = new DisplayService(unitOfWork))
+            //{
                 var displays = new MapperConfiguration(cfg => cfg.CreateMap<DisplayDTO, DisplayViewModel>()).CreateMapper();
-                ViewBag.Displays = Mapper.Map<IEnumerable<DisplayDTO>, List<DisplayViewModel>>(displayService.GetAll());
-            }
+                ViewBag.Displays = mapper.Map<IEnumerable<DisplayDTO>, List<DisplayViewModel>>(displayService.GetAll());
+            //}
             //ICalculatorService calculatorService = new CalculatorService(unitOfWork);
             //var calculators = new MapperConfiguration(cfg => cfg.CreateMap<CalculatorDTO, CityViewModel>()).CreateMapper();
             //ViewData["Calculators"] = Mapper.Map<IEnumerable<CalculatorDTO>, List<CalculatorDTO>>(calculatorService.GetAll());

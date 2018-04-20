@@ -24,3 +24,5 @@ H:\___Project_2018\Led-reklama\Led.DAL\obj\Debug\Led.DAL.csproj.CoreCompileInput
 H:\___Project_2018\Led-reklama\Led.DAL\obj\Debug\Led.DAL.csproj.CopyComplete
 H:\___Project_2018\Led-reklama\Led.DAL\obj\Debug\Led.DAL.dll
 H:\___Project_2018\Led-reklama\Led.DAL\obj\Debug\Led.DAL.pdb
+H:\___Project_2018\Led-reklama\Led.DAL\bin\Debug\EntityFramework.dll
+H:\___Project_2018\Led-reklama\Led.DAL\bin\Debug\EntityFramework.SqlServer.dll

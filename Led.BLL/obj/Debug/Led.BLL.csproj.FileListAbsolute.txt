@@ -80,3 +80,5 @@ H:\___Project_2018\Led-reklama\Led.BLL\obj\Debug\Led.BLL.csproj.CoreCompileInput
 H:\___Project_2018\Led-reklama\Led.BLL\obj\Debug\Led.BLL.csproj.CopyComplete
 H:\___Project_2018\Led-reklama\Led.BLL\obj\Debug\Led.BLL.dll
 H:\___Project_2018\Led-reklama\Led.BLL\obj\Debug\Led.BLL.pdb
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\AutoMapper.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\Ninject.dll

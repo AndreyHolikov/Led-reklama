@@ -122,7 +122,20 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Led.BLL\Led.BLL.csproj">
+      <Project>{3d30f1ec-8d1b-43cc-8b3f-68063b6ac5cb}</Project>
+      <Name>Led.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Led.DAL\Led.DAL.csproj">
+      <Project>{ef957571-6e1c-489f-9501-d01fde4e78c5}</Project>
+      <Name>Led.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Led.WEB\Led.WEB.csproj">
+      <Project>{95b35916-ada4-4efb-baa5-d17cad780686}</Project>
+      <Name>Led.WEB</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
