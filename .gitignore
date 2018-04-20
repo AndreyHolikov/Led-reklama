@@ -14,3 +14,13 @@ Led.BLL/bin/Release/*
 Led.DAL/bin/Release/*
 Led.Tests/bin/Release/*
 Led.WEB/bin/Release/*
+
+Led.BLL/obj/*
+Led.DAL/obj/*
+Led.Tests/obj/*
+Led.WEB/obj/*
+
+Led.BLL/obj/*.csproj
+Led.DAL/obj/*.csproj
+Led.Tests/obj/*.csproj
+Led.WEB/obj/*.csproj
