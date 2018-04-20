@@ -40,3 +40,43 @@ H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.BLL\bin\Debug\ru\System.Web.WebP
 H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.BLL\obj\Debug\Led.BLL.csproj.CopyComplete
 H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.BLL\obj\Debug\Led.BLL.Resource.resources
 H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.BLL\obj\Debug\Led.BLL.csproj.GenerateResource.cache
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\ApplicationInsights.config
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\Led.BLL.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\Led.BLL.pdb
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\Led.DAL.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\Unit-of-Work-Mvc-Example.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\EntityFramework.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\System.Web.Optimization.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\System.Web.Mvc.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\Microsoft.Web.Infrastructure.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\System.Web.Razor.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\System.Web.WebPages.Razor.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\System.Web.WebPages.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\System.Web.WebPages.Deployment.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\Led.DAL.pdb
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\Led.DAL.dll.config
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\Unit-of-Work-Mvc-Example.pdb
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\Unit-of-Work-Mvc-Example.dll.config
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\AutoMapper.xml
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\Ninject.xml
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\EntityFramework.xml
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\System.Web.Optimization.xml
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\System.Web.Mvc.xml
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\System.Web.Razor.xml
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\System.Web.WebPages.Razor.xml
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\System.Web.WebPages.xml
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\System.Web.WebPages.Deployment.xml
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\ru\EntityFramework.resources.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\ru\System.Web.Optimization.resources.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\ru\System.Web.Mvc.resources.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\ru\System.Web.Razor.resources.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\ru\System.Web.WebPages.Razor.resources.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\ru\System.Web.WebPages.resources.dll
+H:\___Project_2018\Led-reklama\Led.BLL\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll
+H:\___Project_2018\Led-reklama\Led.BLL\obj\Debug\Led.BLL.csprojResolveAssemblyReference.cache
+H:\___Project_2018\Led-reklama\Led.BLL\obj\Debug\Led.BLL.Resource.resources
+H:\___Project_2018\Led-reklama\Led.BLL\obj\Debug\Led.BLL.csproj.GenerateResource.cache
+H:\___Project_2018\Led-reklama\Led.BLL\obj\Debug\Led.BLL.csproj.CoreCompileInputs.cache
+H:\___Project_2018\Led-reklama\Led.BLL\obj\Debug\Led.BLL.csproj.CopyComplete
+H:\___Project_2018\Led-reklama\Led.BLL\obj\Debug\Led.BLL.dll
+H:\___Project_2018\Led-reklama\Led.BLL\obj\Debug\Led.BLL.pdb

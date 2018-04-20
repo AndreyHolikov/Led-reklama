@@ -1,3 +1,9 @@
+packages/*
+/packages/*
+
+packages/
+
+
 images/*
 Led.BLL/bin/*
 Led.DAL/bin/*
@@ -19,6 +25,11 @@ Led.BLL/obj/*
 Led.DAL/obj/*
 Led.Tests/obj/*
 Led.WEB/obj/*
+
+Led.BLL/obj/
+Led.DAL/obj/
+Led.Tests/obj/
+Led.WEB/obj/
 
 Led.BLL/obj/*.csproj
 Led.DAL/obj/*.csproj

@@ -264,16 +264,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Led.BLL\Led.BLL.csproj">
-      <Project>{3d30f1ec-8d1b-43cc-8b3f-68063b6ac5cb}</Project>
-      <Name>Led.BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Led.DAL\Led.DAL.csproj">
-      <Project>{ef957571-6e1c-489f-9501-d01fde4e78c5}</Project>
-      <Name>Led.DAL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>

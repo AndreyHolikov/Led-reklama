@@ -78,14 +78,12 @@
       <Project>{ef957571-6e1c-489f-9501-d01fde4e78c5}</Project>
       <Name>Led.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Unit-of-Work-Mvc-Example\Unit-of-Work-Mvc-Example.csproj">
+    <ProjectReference Include="..\..\..\Applications VS\VS 2017\AspNetMvcMetanit\Unit-of-Work-Mvc-Example\Unit-of-Work-Mvc-Example.csproj">
       <Project>{8FC6BB2E-E020-4FEE-983A-0AE9BB2A8516}</Project>
       <Name>Unit-of-Work-Mvc-Example</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BusinessModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

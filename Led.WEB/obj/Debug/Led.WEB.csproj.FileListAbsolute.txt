@@ -119,3 +119,5 @@ H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.WEB\bin\ru\EntityFramework.resou
 H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.WEB\bin\ru\EntityFramework.SqlServer.resources.dll
 H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.WEB\obj\Debug\Led.WEB.Resource.resources
 H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.WEB\obj\Debug\Led.WEB.csproj.GenerateResource.cache
+H:\___Project_2018\Led-reklama\Led.WEB\obj\Debug\Led.WEB.dll
+H:\___Project_2018\Led-reklama\Led.WEB\obj\Debug\Led.WEB.pdb

@@ -72,3 +72,5 @@ H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.Tests\bin\Debug\ru\EntityFramewo
 H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.Tests\bin\Debug\EntityFramework.SqlServer.dll
 H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.Tests\bin\Debug\EntityFramework.SqlServer.xml
 H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.Tests\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+H:\___Project_2018\Led-reklama\Led.Tests\obj\Debug\Led.Tests.dll
+H:\___Project_2018\Led-reklama\Led.Tests\obj\Debug\Led.Tests.pdb

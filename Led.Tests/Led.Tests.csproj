@@ -38,11 +38,13 @@
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\..\Applications VS\VS 2017\AspNetMvcMetanit\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\..\Applications VS\VS 2017\AspNetMvcMetanit\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework">
@@ -119,20 +121,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Led.BLL\Led.BLL.csproj">
-      <Project>{3d30f1ec-8d1b-43cc-8b3f-68063b6ac5cb}</Project>
-      <Name>Led.BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Led.DAL\Led.DAL.csproj">
-      <Project>{ef957571-6e1c-489f-9501-d01fde4e78c5}</Project>
-      <Name>Led.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Led.WEB\Led.WEB.csproj">
-      <Project>{95B35916-ADA4-4EFB-BAA5-D17CAD780686}</Project>
-      <Name>Led.WEB</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
