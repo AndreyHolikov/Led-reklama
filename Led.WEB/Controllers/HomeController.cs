@@ -60,11 +60,11 @@ namespace Led.WEB.Controllers
             //}
             //return View("IndexAddress");
 
-            IDisplayService displayService = new DisplayService(unitOfWork);
-
-            var displays = new MapperConfiguration(cfg => cfg.CreateMap<DisplayDTO, DisplayViewModel>()).CreateMapper();
-            ViewBag.Displays = Mapper.Map<IEnumerable<DisplayDTO>, List<DisplayViewModel>>(displayService.GetAll());
-
+            using (IDisplayService displayService = new DisplayService(unitOfWork))
+            {
+                var displays = new MapperConfiguration(cfg => cfg.CreateMap<DisplayDTO, DisplayViewModel>()).CreateMapper();
+                ViewBag.Displays = Mapper.Map<IEnumerable<DisplayDTO>, List<DisplayViewModel>>(displayService.GetAll());
+            }
             //ICalculatorService calculatorService = new CalculatorService(unitOfWork);
             //var calculators = new MapperConfiguration(cfg => cfg.CreateMap<CalculatorDTO, CityViewModel>()).CreateMapper();
             //ViewData["Calculators"] = Mapper.Map<IEnumerable<CalculatorDTO>, List<CalculatorDTO>>(calculatorService.GetAll());

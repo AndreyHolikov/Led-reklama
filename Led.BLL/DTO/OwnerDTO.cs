@@ -11,12 +11,12 @@ namespace Led.BLL.DTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<DisplayDTO> Displays { get; set; } // virtual,
-        public int CountLedDisplays { get; set; }
+        public ICollection<DisplayDTO> LedDisplays { get; set; } // virtual,
+        //public int CountLedDisplays { get; set; }
 
         public OwnerDTO()
         {
-            Displays = new List<DisplayDTO>();
+            LedDisplays = new List<DisplayDTO>();
         }
     }
 }

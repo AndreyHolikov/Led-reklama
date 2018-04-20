@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Led.Models.Db.Owner>
+﻿@model IEnumerable<Led.WEB.Models.OwnerViewModel>
 
 @{
     ViewBag.Title = "Собственники";
@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            Количество экранов
+            Экраны
         </th>
         <th></th>
     </tr>
@@ -26,8 +26,17 @@
             @* @Html.DisplayFor(modelItem => item.Name)*@
             @Html.ActionLink(item.Name, "Details", new { id = item.Id })
         </td>
-        <td>@Html.ActionLink(linkText:item.LedDisplays.Count.ToString(), actionName: "Index",
-           controllerName:"LedDisplay", routeValues: new { ownerId = item.Id }, htmlAttributes:null)
+        <td>
+            <ul>
+                @foreach (var display in item.LedDisplays)
+                {
+                    <li>
+                        @display.Label
+                    </li>
+                }
+            </ul>
+    @*Html.ActionLink(linkText:item.LedDisplays.Count.ToString(), actionName: "Index",
+           controllerName:"LedDisplay", routeValues: new { ownerId = item.Id }, htmlAttributes:null)*@
             </td>
         <td>
             @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |

@@ -7,17 +7,19 @@ using System.Web;
 
 namespace Led.WEB.Mapping
 {
-    public static class MappingProfile
-    {
-        public static MapperConfiguration InitializeAutoMapper()
-        {
-            MapperConfiguration config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile(new WebMappingProfile());  //mapping between Web and Business layer objects
-                cfg.AddProfile(new BLMappingProfile());  // mapping between Business and DB layer objects
-            });
+    // Перенесен в AutoMapperModule
 
-            return config;
-        }
-    }
+    //public static class MappingProfile
+    //{
+    //    public static MapperConfiguration InitializeAutoMapper()
+    //    {
+    //        MapperConfiguration config = new MapperConfiguration(cfg =>
+    //        {
+    //            cfg.AddProfile(new WebMappingProfile());  //mapping between Web and Business layer objects
+    //            cfg.AddProfile(new BLMappingProfile());  // mapping between Business and DB layer objects
+    //        });
+
+    //        return config;
+    //    }
+    //}
 }

@@ -117,3 +117,5 @@ H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.WEB\bin\Ninject.Web.Common.WebHo
 H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.WEB\bin\Ninject.Web.Mvc.xml
 H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.WEB\bin\ru\EntityFramework.resources.dll
 H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.WEB\bin\ru\EntityFramework.SqlServer.resources.dll
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.WEB\obj\Debug\Led.WEB.Resource.resources
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.WEB\obj\Debug\Led.WEB.csproj.GenerateResource.cache

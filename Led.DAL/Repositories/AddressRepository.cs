@@ -26,7 +26,7 @@ namespace Led.DAL.Repositories
             //  
             //    "SELECT Addresses.Id, Addresses.FullAddress, City.Name as City.Name, City.ID as City.Id FROM Addresses, Cities WHERE Address.CityId=City.ID");
             //return addresses;
-            return db.Addresses;//.Include(a=>a.City);
+            return db.Addresses.Include(a=>a.City);
         }
 
         public Address Get(int id)

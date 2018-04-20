@@ -9,12 +9,12 @@ namespace Led.WEB.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<DisplayViewModel> Displays { get; set; } // virtual,
-        public int CountLedDisplays { get; set; }
+        public ICollection<DisplayViewModel> LedDisplays { get; set; } // virtual,
+        //public int CountLedDisplays { get; set; }
 
         public OwnerViewModel()
         {
-            Displays = new List<DisplayViewModel>();
+            LedDisplays = new List<DisplayViewModel>();
         }
     }
 }

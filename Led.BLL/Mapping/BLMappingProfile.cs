@@ -14,24 +14,24 @@ namespace Led.BLL.Mapping
     {
         public BLMappingProfile()
         {
-            CreateMap<Owner, OwnerDTO>();
-            CreateMap<OwnerDTO, Owner>();
+            CreateMap<Owner, OwnerDTO>().ReverseMap();
 
             CreateMap<Address, AddressDTO>()
                 .ForMember(opt => opt.FullAddress, opt => opt.MapFrom(c => c.FullAddress))
-                //.ForMember(opt => opt.City, opt => opt.MapFrom(src => src.City.Name))
+                //.ForMember(d => d.CustomerName, opt => opt.MapFrom(src => src.Customer.Name))
+                .ForMember(opt => opt.CityName, opt => opt.MapFrom(src => src.City.Name))
                 .ReverseMap()
-                .ForPath(s => s.City.Name, opt => opt.MapFrom(src => src.City));
-            CreateMap<AddressDTO, Address>()
-                .ForMember(opt => opt.FullAddress, opt => opt.MapFrom(c => c.FullAddress))
-                .ReverseMap()
-                .ForPath(s => s.City, opt => opt.MapFrom(src => src.City.Name));
+                .ForPath(s => s.City.Name, opt => opt.MapFrom(src => src.CityName));
+            // .ForPath(s => s.Customer.Name, opt => opt.Ignore());
 
-            CreateMap<City, CityDTO>();
-            CreateMap<CityDTO, City>();
 
-            CreateMap<Calculator, CalculatorDTO>();
-            CreateMap<CalculatorDTO, Calculator>();
+            CreateMap<City, CityDTO>().ReverseMap();
+
+
+            CreateMap<Calculator, CalculatorDTO>().ReverseMap();
+
+
+            CreateMap<Owner, OwnerDTO>().ReverseMap();
             /*etc....*/
         }
     }

@@ -17,7 +17,7 @@ namespace Led.WEB.Areas.admin
             context.MapRoute(
                 "admin_default",
                 "admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { controller = "Panel", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

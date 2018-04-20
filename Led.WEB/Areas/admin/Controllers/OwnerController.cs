@@ -9,25 +9,42 @@ using Led.DAL.Repositories;
 using System.Configuration;
 using Led.BLL.Services;
 using Led.WEB.Models;
+using Led.DAL.Interfaces;
+using AutoMapper;
+using Led.BLL.DTO;
 
-namespace Led.Areas.Admin.Controllers
+namespace Led.WEB.Areas.Admin.Controllers
 {
     //[Authorize]
     public class OwnerController : Controller
     {
-        EFUnitOfWork unitOfWork;
-        public OwnerController()
+        #region comment
+        //EFUnitOfWork unitOfWork;
+        //public OwnerController()
+        //{
+        //    string ConnectionString = ConfigurationManager.ConnectionStrings["LedContextLocalhost"].ConnectionString;
+        //    unitOfWork = new EFUnitOfWork(ConnectionString);
+        //    //IOwnerService ownerService = new 
+        //}
+
+        //public OwnerController(IUnitOfWork unitOfWork)
+        //{
+        //    //string ConnectionString = ConfigurationManager.ConnectionStrings["LedContextLocalhost"].ConnectionString;
+        //    this.unitOfWork = (EFUnitOfWork)unitOfWork;
+        //}
+        #endregion
+
+        IOwnerService dbService;
+        public OwnerController(IOwnerService serv)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["LedContextLocalhost"].ConnectionString;
-            unitOfWork = new EFUnitOfWork(ConnectionString);
-            //IOwnerService ownerService = new 
+            dbService = serv;
         }
 
         // GET: Owner
         public ActionResult Index()
         {
-            IOwnerService ownerService = new OwnerService(unitOfWork);
-                return View(ownerService.GetAll());
+            //var list = new MapperConfiguration(cfg => cfg.CreateMap<OwnerDTO, OwnerViewModel>()).CreateMapper();
+            return View(Mapper.Map<IEnumerable<OwnerDTO>, List<OwnerViewModel>>(dbService.GetAll()));
         }
 
         // GET: Owner/Details/5
@@ -37,12 +54,12 @@ namespace Led.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            IOwnerService db = new OwnerService(unitOfWork);
-                var owner = db.Get(id);
+            //IOwnerService db = new OwnerService(unitOfWork);
+                var owner = dbService.Get(id);
 
                 if (owner != null)
                 {
-                    return View(owner);
+                    return View(Mapper.Map<OwnerDTO, OwnerViewModel>(owner));
                 }
                 else
                 {
@@ -62,8 +79,9 @@ namespace Led.Areas.Admin.Controllers
         {
             try
             {
-                IOwnerService db = new OwnerService(unitOfWork);
-                    //db.Owners.Add(owner);
+                //IOwnerService db = new OwnerService(unitOfWork);
+
+                    //dbService.Owners.Add(owner);
                     //db.SaveChanges();
 
                 return RedirectToAction("Index");

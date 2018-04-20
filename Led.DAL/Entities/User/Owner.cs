@@ -19,7 +19,7 @@ namespace Led.DAL.Entities
         public string Name { get; set; }
 
         [Display(Name = "Экраны")]
-        public ICollection<Display> LedDisplays { get; set; } // virtual,
+        public virtual ICollection<Display> LedDisplays { get; set; } // virtual,
 
 
         public Owner()

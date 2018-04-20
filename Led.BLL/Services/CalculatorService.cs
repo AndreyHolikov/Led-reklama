@@ -14,7 +14,7 @@ namespace Led.BLL.Services
 {
     public class CalculatorService : ICalculatorService
     {
-        IUnitOfWork Database { get; set; }
+        private IUnitOfWork Database { get; set; }
 
         public CalculatorService(IUnitOfWork uow)
         {

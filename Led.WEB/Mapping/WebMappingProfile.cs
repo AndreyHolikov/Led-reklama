@@ -13,21 +13,15 @@ namespace Led.WEB.Mapping
     {
         public WebMappingProfile()
         {
-            CreateMap<OwnerDTO, OwnerViewModel>();
-            CreateMap<OwnerViewModel, OwnerDTO>();
+            CreateMap<OwnerDTO, OwnerViewModel>().ReverseMap();
 
-            CreateMap<AddressDTO, AddressViewModel>()
-                .ForMember(opt => opt.FullAddress, opt => opt.MapFrom(c => c.FullAddress))
-                .ForMember(opt => opt.City, opt => opt.MapFrom(src => src.City)); 
-            CreateMap<AddressViewModel, AddressDTO>()
-                .ForMember(opt => opt.FullAddress, opt => opt.MapFrom(c => c.FullAddress))
-                .ForMember(opt => opt.City, opt => opt.MapFrom(src => src.City));
+            CreateMap<AddressDTO, AddressViewModel>().ReverseMap();
 
-            CreateMap<CityDTO, CityViewModel>();
-            CreateMap<CityViewModel, CityDTO>();
+            CreateMap<CityDTO, CityViewModel>().ReverseMap();
 
-            CreateMap<CalculatorDTO, CalculatorViewModel>();
-            CreateMap<CalculatorViewModel, CalculatorDTO>();
+            CreateMap<CalculatorDTO, CalculatorViewModel>().ReverseMap();
+
+            CreateMap<OwnerDTO, OwnerViewModel>().ReverseMap();
             /*etc...*/
         }
     }

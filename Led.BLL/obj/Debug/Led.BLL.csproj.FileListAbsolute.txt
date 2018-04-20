@@ -38,3 +38,5 @@ H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.BLL\bin\Debug\ru\System.Web.WebP
 H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.BLL\bin\Debug\ru\System.Web.WebPages.resources.dll
 H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.BLL\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll
 H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.BLL\obj\Debug\Led.BLL.csproj.CopyComplete
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.BLL\obj\Debug\Led.BLL.Resource.resources
+H:\Applications VS\VS 2017\AspNetMvcMetanit\Led.BLL\obj\Debug\Led.BLL.csproj.GenerateResource.cache

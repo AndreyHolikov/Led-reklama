@@ -14,22 +14,11 @@ namespace Led.BLL.Services
 {
     public class OwnerService : IOwnerService
     {
-        IUnitOfWork Database { get; set; }
+        private IUnitOfWork Database { get; set; }
 
         public OwnerService(IUnitOfWork uow)
         {
             Database = uow;
-            // Настройка AutoMapper
-            // применяем автомаппер для проекции одной коллекции на другую
-            //Mapper.Initialize(cfg =>
-            //{
-            //    cfg.CreateMap<Address, AddressDTO>()
-            //        .ForMember("FullAddress", opt => opt.MapFrom(c => c.FullAddress))
-            //        .ForMember(opt => opt.City, opt => opt.MapFrom(src => src.City.Name));
-            //    cfg.CreateMap<City, CityDTO>();
-            //    cfg.CreateMap<Display, DisplayDTO>();
-            //    //cfg.CreateMap<PairDTO, Pair>();
-            //});
         }
 
         //public void AddOrder(CityDTO cityDto)
@@ -55,26 +44,25 @@ namespace Led.BLL.Services
 
         public IEnumerable<OwnerDTO> GetAll()
         {
-            IEnumerable<Owner> Owners = Database.Owners.GetAll();
-            Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<Owner, OwnerDTO>()
-                    .ForMember(opt => opt.CountLedDisplays, opt => opt.MapFrom(src => src.LedDisplays.ToList().Count));
-            });
-            // Выполняем сопоставление
-            IEnumerable<OwnerDTO> OwnerDTOs = Mapper.Map<IEnumerable<Owner>, List<OwnerDTO>>(Owners);
-            return OwnerDTOs;
+            // Настройка AutoMapper
+            //Mapper.Initialize(cfg => cfg.CreateMap<Owner, OwnerDTO>());
+
+            var all = Database.Owners.GetAll();//.UseAsDataSource<OwnerDTO>();
+            // Выполняем сопоставление, применяем автомаппер для проекции одной коллекции на другую
+            return Mapper.Map<IEnumerable<Owner>, List<OwnerDTO>>(all);
+            //return all;
         }
 
         public OwnerDTO Get(int? id)
         {
             if (id == null)
-                throw new ValidationException(
-                    ValidationExceptionMessage.OWNER_NO_SET_ID, "");
-            var owner = Database.Owners.Get(id.Value);
+                throw new ValidationException(Resource.Exception_OWNER_NO_SET_ID, "");
+
+            //Mapper.Initialize(cfg => cfg.CreateMap<Owner, OwnerDTO>());
+            var owner = Mapper.Map<Owner, OwnerDTO>(Database.Owners.Get(id.Value));
+
             if (owner == null)
-                throw new ValidationException(
-                    ValidationExceptionMessage.OWNER_NOT_FOUND, "");
+                throw new ValidationException(Resource.Exception_OWNER_NOT_FOUND, "");
 
             return new OwnerDTO { Id = owner.Id, Name = owner.Name};
         }

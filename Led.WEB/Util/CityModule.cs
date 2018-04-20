@@ -13,6 +13,7 @@ namespace Led.WEB.Util
         public override void Load()
         {
             Bind<ICityService>().To<CityService>();
+            //Bind<CustomMapper>().ToSelf().InSingletonScope().Named("Custom1Mapper");
         }
     }
 }

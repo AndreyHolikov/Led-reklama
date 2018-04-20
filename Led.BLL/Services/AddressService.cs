@@ -14,24 +14,21 @@ namespace Led.BLL.Services
 {
     public class AddressService : IAddressService
     {
-        IUnitOfWork Database { get; set; }
+        private IUnitOfWork Database { get; set; }
 
         public AddressService(IUnitOfWork uow)
         {
             Database = uow;
             // Настройка AutoMapper
             // применяем автомаппер для проекции одной коллекции на другую
-            Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<Address, AddressDTO>()
-                    .ForMember("FullAddress", opt => opt.MapFrom(c => c.FullAddress))
-                    .ForMember(opt => opt.City, opt => opt.MapFrom(src => src.City.Name));
-                    //.ReverseMap()
-                    //.ForPath(s => s.Customer.Name, opt => opt.Ignore());
-                //cfg.CreateMap<City, CityDTO>();
-                //cfg.CreateMap<Display, DisplayDTO>();
-                //cfg.CreateMap<PairDTO, Pair>();
-            });
+            //Mapper.Initialize(cfg =>
+            //{
+            //    cfg.CreateMap<Address, AddressDTO>()
+            //        .ForMember("FullAddress", opt => opt.MapFrom(c => c.FullAddress))
+            //        .ForMember(opt => opt.City, opt => opt.MapFrom(src => src.City.Name));
+            //        //.ReverseMap()
+            //        //.ForPath(s => s.Customer.Name, opt => opt.Ignore());
+            //});
         }
 
         //public void AddOrder(CityDTO cityDto)
@@ -57,18 +54,29 @@ namespace Led.BLL.Services
 
         public IEnumerable<AddressDTO> GetAll()
         {
-            IEnumerable<Address> Addresses = Database.Addresses.GetAll().ToList();
+            // Настройка AutoMapper
+            Mapper.Initialize(cfg => cfg.CreateMap<Address, AddressDTO>());
+
+            //IEnumerable<AddressDTO> Addresses = Database.Addresses.GetAll().Select(a => new AddressDTO
+            //{
+            //    Id = a.Id,
+            //    FullAddress = a.FullAddress,
+            //    City = a.City.Name
+            //});
             // Выполняем сопоставление
-            return Mapper.Map<IEnumerable<Address>, List<AddressDTO>>(Addresses);
+            //return Addresses;
+            var all = Database.Addresses.GetAll();
+            // Выполняем сопоставление, применяем автомаппер для проекции одной коллекции на другую
+            return Mapper.Map<IEnumerable<Address>, List<AddressDTO>>(all);
         }
 
         public AddressDTO Get(int? id)
         {
             if (id == null)
-                throw new ValidationException("Не установлено id адреса", "");
+                throw new ValidationException(Resource.Exception_ADDRESS_NO_SET_ID, "");
             var address = Database.Addresses.Get(id.Value);
             if (address == null)
-                throw new ValidationException("Адрес не найден", "");
+                throw new ValidationException(Resource.Exception_ADDRESS_NOT_FOUND, "");
 
             return new AddressDTO { Id = address.Id, FullAddress = address.FullAddress};
         }

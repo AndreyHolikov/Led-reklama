@@ -18,7 +18,7 @@ namespace Led.Tests.Controllers
     public class HomeControllerTest
     {
         [TestMethod]
-        public void IndexViewModelNotNull()
+        public void HomeController_Index_NotNull()
         {
             // Arrange
             //var mock = new Mock<IRepository<Address>>();

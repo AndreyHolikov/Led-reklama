@@ -14,7 +14,7 @@ namespace Led.BLL.Services
 {
     public class CityService : ICityService
     {
-        IUnitOfWork Database { get; set; }
+        private IUnitOfWork Database { get; set; }
 
         public CityService(IUnitOfWork uow)
         {
