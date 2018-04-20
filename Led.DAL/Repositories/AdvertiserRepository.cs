@@ -12,7 +12,7 @@ namespace Led.DAL.Repositories
 {
     class AdvertiserRepository : IRepository<Advertiser>
     {
-        private LedContext db;
+        private readonly LedContext db;
 
         public AdvertiserRepository(LedContext context)
         {

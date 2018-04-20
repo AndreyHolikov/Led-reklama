@@ -12,7 +12,7 @@ namespace Led.DAL.Repositories
 {
     class OfferVideoPropertyRepository : IRepository<OfferVideoProperty>
     {
-        private LedContext db;
+        private readonly LedContext db;
 
         public OfferVideoPropertyRepository(LedContext context)
         {

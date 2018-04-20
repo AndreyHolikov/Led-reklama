@@ -12,7 +12,7 @@ namespace Led.DAL.Repositories
 {
     class CalculatorRepository : IRepository<Calculator>
     {
-        private LedContext db;
+        private readonly LedContext db;
 
         public CalculatorRepository(LedContext context)
         {

@@ -12,7 +12,7 @@ namespace Led.DAL.Repositories
 {
     class VideoPropertyInputRangeRepository : IRepository<VideoPropertyInputRange>
     {
-        private LedContext db;
+        private readonly LedContext db;
 
         public VideoPropertyInputRangeRepository(LedContext context)
         {

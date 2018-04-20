@@ -12,7 +12,7 @@ namespace Led.DAL.Repositories
 {
     class DisplayRepository : IRepository<Display>
     {
-        private LedContext db;
+        private readonly LedContext db;
 
         public DisplayRepository(LedContext context)
         {

@@ -12,7 +12,7 @@ namespace Led.DAL.Repositories
 {
     class LedDisplayPropertyValueRepository : IRepository<LedDisplayPropertyValue>
     {
-        private LedContext db;
+        private readonly LedContext db;
 
         public LedDisplayPropertyValueRepository(LedContext context)
         {

@@ -12,7 +12,7 @@ namespace Led.DAL.Repositories
 {
     class VideoPropertySelectOptionRepository : IRepository<VideoPropertySelectOption>
     {
-        private LedContext db;
+        private readonly LedContext db;
 
         public VideoPropertySelectOptionRepository(LedContext context)
         {

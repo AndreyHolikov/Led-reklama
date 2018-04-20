@@ -12,7 +12,7 @@ namespace Led.DAL.Repositories
 {
     class ImageRepository : IRepository<Image>
     {
-        private LedContext db;
+        private readonly LedContext db;
 
         public ImageRepository(LedContext context)
         {

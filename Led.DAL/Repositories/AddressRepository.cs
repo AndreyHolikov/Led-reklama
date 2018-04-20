@@ -12,7 +12,7 @@ namespace Led.DAL.Repositories
 {
     class AddressRepository : IRepository<Address>
     {
-        private LedContext db;
+        private readonly LedContext db;
 
         public AddressRepository(LedContext context)
         {
@@ -21,7 +21,6 @@ namespace Led.DAL.Repositories
 
         public IEnumerable<Address> GetAll()
         {
-
             //var addresses = db.Database.SqlQuery<Address>(
             //  
             //    "SELECT Addresses.Id, Addresses.FullAddress, City.Name as City.Name, City.ID as City.Id FROM Addresses, Cities WHERE Address.CityId=City.ID");

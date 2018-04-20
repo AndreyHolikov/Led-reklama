@@ -12,7 +12,7 @@ namespace Led.DAL.Repositories
 {
     class OwnerRepository : IRepository<Owner>
     {
-        private LedContext db;
+        private readonly LedContext db;
 
         public OwnerRepository(LedContext context)
         {
