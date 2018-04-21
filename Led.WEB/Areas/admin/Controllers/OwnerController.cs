@@ -46,8 +46,9 @@ namespace Led.WEB.Areas.Admin.Controllers
         // GET: Owner
         public ActionResult Index()
         {
+            var owners = dbService.GetAll();
             //var list = new MapperConfiguration(cfg => cfg.CreateMap<OwnerDTO, OwnerViewModel>()).CreateMapper();
-            return View(mapperService.Map<IEnumerable<OwnerDTO>, List<OwnerViewModel>>(dbService.GetAll()));
+            return View(mapperService.Map<IEnumerable<OwnerDTO>, List<OwnerViewModel>>(owners));
         }
 
         // GET: Owner/Details/5

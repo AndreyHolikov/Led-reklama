@@ -18,7 +18,7 @@ namespace Led.WEB.Controllers
 {
     public class HomeController : Controller
     {
-        EFUnitOfWork unitOfWork;
+        //EFUnitOfWork unitOfWork;
 
         //public HomeController()
         //{
