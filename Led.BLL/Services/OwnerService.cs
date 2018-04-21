@@ -14,10 +14,11 @@ namespace Led.BLL.Services
 {
     public class OwnerService : IOwnerService
     {
-        private IUnitOfWork Database { get; set; }
+        private readonly IUnitOfWork Database;
+        private readonly IMapper mapperService;
 
         public OwnerService(IUnitOfWork uow)
-        {
+        { 
             Database = uow;
         }
 
@@ -49,7 +50,7 @@ namespace Led.BLL.Services
 
             var all = Database.Owners.GetAll();//.UseAsDataSource<OwnerDTO>();
             // Выполняем сопоставление, применяем автомаппер для проекции одной коллекции на другую
-            return Mapper.Map<IEnumerable<Owner>, List<OwnerDTO>>(all);
+            return mapper.Map<IEnumerable<Owner>, List<OwnerDTO>>(all);
             //return all;
         }
 

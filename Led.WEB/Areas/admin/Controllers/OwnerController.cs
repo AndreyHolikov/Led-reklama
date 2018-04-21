@@ -34,17 +34,20 @@ namespace Led.WEB.Areas.Admin.Controllers
         //}
         #endregion
 
-        IOwnerService dbService;
-        public OwnerController(IOwnerService serv)
+        private readonly IOwnerService dbService;
+        private readonly IMapper mapperService;
+
+        public OwnerController(IOwnerService serv, IMapper mapper)
         {
             dbService = serv;
+            this.mapperService = mapper;
         }
 
         // GET: Owner
         public ActionResult Index()
         {
             //var list = new MapperConfiguration(cfg => cfg.CreateMap<OwnerDTO, OwnerViewModel>()).CreateMapper();
-            return View(Mapper.Map<IEnumerable<OwnerDTO>, List<OwnerViewModel>>(dbService.GetAll()));
+            return View(mapperService.Map<IEnumerable<OwnerDTO>, List<OwnerViewModel>>(dbService.GetAll()));
         }
 
         // GET: Owner/Details/5

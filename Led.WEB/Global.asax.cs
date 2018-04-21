@@ -36,9 +36,10 @@ namespace Led.WEB
             NinjectModule autoMapperModule = new AutoMapperModule();
             NinjectModule cityModule = new CityModule();
             NinjectModule ownerModule = new OwnerModule();
+            NinjectModule displayModule = new DisplayModule();
             NinjectModule serviceModule = new ServiceModule("DefaultConnection");
 
-            var kernel = new StandardKernel(autoMapperModule, cityModule, ownerModule, serviceModule);
+            var kernel = new StandardKernel(autoMapperModule, cityModule, ownerModule, displayModule, serviceModule);
 
             //kernel.Get<CustomMapper>("Custom1Mapper").Initialize(x => x.AddProfile<AutoMapperCustom1Profile>());
 

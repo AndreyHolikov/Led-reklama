@@ -14,14 +14,12 @@ namespace Led.WEB.Mapping
         public WebMappingProfile()
         {
             CreateMap<OwnerDTO, OwnerViewModel>().ReverseMap();
-
             CreateMap<AddressDTO, AddressViewModel>().ReverseMap();
-
             CreateMap<CityDTO, CityViewModel>().ReverseMap();
-
             CreateMap<CalculatorDTO, CalculatorViewModel>().ReverseMap();
-
             CreateMap<OwnerDTO, OwnerViewModel>().ReverseMap();
+            CreateMap<DisplayDTO, DisplayViewModel>().ReverseMap();
+            //    .ForMember("Name", opt => opt.MapFrom(obj => obj.Name));
             /*etc...*/
         }
     }

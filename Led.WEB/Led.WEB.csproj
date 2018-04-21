@@ -186,6 +186,7 @@
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
     <Compile Include="Util\AutoMapperModule.cs" />
+    <Compile Include="Util\DisplayModule.cs" />
     <Compile Include="Util\OwnerModule.cs" />
     <Compile Include="Util\CityModule.cs" />
     <Compile Include="Util\DatabaseConfiguration.cs" />

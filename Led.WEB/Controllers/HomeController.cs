@@ -19,53 +19,33 @@ namespace Led.WEB.Controllers
     public class HomeController : Controller
     {
         EFUnitOfWork unitOfWork;
-        public HomeController()
-        {
-            //string ConnectionString = ConfigurationManager.ConnectionStrings["LedContextLocalhost"].ConnectionString;
-            unitOfWork = DatabaseConfiguration.GetEFUnitOfWork();
-        }
 
-        public HomeController(IUnitOfWork unitOfWork)
-        {
-            //string ConnectionString = ConfigurationManager.ConnectionStrings["LedContextLocalhost"].ConnectionString;
-            this.unitOfWork = (EFUnitOfWork)unitOfWork;
-        }
+        //public HomeController()
+        //{
+        //    //string ConnectionString = ConfigurationManager.ConnectionStrings["LedContextLocalhost"].ConnectionString;
+        //    unitOfWork = DatabaseConfiguration.GetEFUnitOfWork();
+        //}
 
-        private IDisplayService displayService;
-        private IMapper mapper { get; set; }
+        //public HomeController(IUnitOfWork unitOfWork)
+        //{
+        //    //string ConnectionString = ConfigurationManager.ConnectionStrings["LedContextLocalhost"].ConnectionString;
+        //    this.unitOfWork = (EFUnitOfWork)unitOfWork;
+        //}
+
+        private readonly IDisplayService dbService;
+        private readonly IMapper mapper;
 
         public HomeController(IDisplayService serv, IMapper mapper)
         {
-            displayService = serv;
+            dbService = serv;
             this.mapper = mapper;
-            //Mapper.Initialize(cfg =>
-            //{
-            //    cfg.CreateMap<DisplayDTO, DisplayViewModel>();
-            //    //    .ForMember("Name", opt => opt.MapFrom(obj => obj.Name));
-            //    //.ForMember(opt => opt.City, opt => opt.MapFrom(src => src.City.Name));
-            //    //cfg.CreateMap<City, CityDTO>();
-            //    //cfg.CreateMap<Display, DisplayDTO>();
-            //});
         }
 
         public ActionResult Index()
         {
-            //AddressService addressService = new AddressService(unitOfWork);
-
-            //IEnumerable<AddressDTO> addressDTOs = addressService.GetAll();
-            //var mapper = new MapperConfiguration(cfg => cfg.CreateMap<AddressDTO, AddressViewModel>()).CreateMapper();
-            //var model = mapper.Map<IEnumerable<AddressDTO>, List<AddressViewModel>>(addressDTOs);
-
-            //using (LedContext context = new LedContext())
-            //{
-            //    context.Addresses.ToList();
-            //}
-            //return View("IndexAddress");
-
-            //using (IDisplayService displayService = new DisplayService(unitOfWork))
-            //{
-                var displays = new MapperConfiguration(cfg => cfg.CreateMap<DisplayDTO, DisplayViewModel>()).CreateMapper();
-                ViewBag.Displays = mapper.Map<IEnumerable<DisplayDTO>, List<DisplayViewModel>>(displayService.GetAll());
+            var displays = dbService.GetAll();
+            ViewBag.Displays = mapper.Map<IEnumerable<DisplayDTO>, List<DisplayViewModel>>(displays);
+            
             //}
             //ICalculatorService calculatorService = new CalculatorService(unitOfWork);
             //var calculators = new MapperConfiguration(cfg => cfg.CreateMap<CalculatorDTO, CityViewModel>()).CreateMapper();
