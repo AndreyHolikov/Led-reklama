@@ -18,20 +18,6 @@ namespace Led.WEB.Controllers
 {
     public class HomeController : Controller
     {
-        //EFUnitOfWork unitOfWork;
-
-        //public HomeController()
-        //{
-        //    //string ConnectionString = ConfigurationManager.ConnectionStrings["LedContextLocalhost"].ConnectionString;
-        //    unitOfWork = DatabaseConfiguration.GetEFUnitOfWork();
-        //}
-
-        //public HomeController(IUnitOfWork unitOfWork)
-        //{
-        //    //string ConnectionString = ConfigurationManager.ConnectionStrings["LedContextLocalhost"].ConnectionString;
-        //    this.unitOfWork = (EFUnitOfWork)unitOfWork;
-        //}
-
         private readonly IDisplayService dbService;
         private readonly IMapper mapper;
 
@@ -57,38 +43,8 @@ namespace Led.WEB.Controllers
             return View();
         }
 
-        //public ActionResult MakeOrder(int? id)
-        //{
-        //    try
-        //    {
-        //        PhoneDTO phone = orderService.GetPhone(id);
-        //        var order = new OrderViewModel { PhoneId = phone.Id };
-
-        //        return View(order);
-        //    }
-        //    catch (ValidationException ex)
-        //    {
-        //        return Content(ex.Message);
-        //    }
-        //}
-        //[HttpPost]
-        //public ActionResult MakeOrder(OrderViewModel order)
-        //{
-        //    try
-        //    {
-        //        var orderDto = new OrderDTO { PhoneId = order.PhoneId, Address = order.Address, PhoneNumber = order.PhoneNumber };
-        //        orderService.MakeOrder(orderDto);
-        //        return Content("<h2>Ваш заказ успешно оформлен</h2>");
-        //    }
-        //    catch (ValidationException ex)
-        //    {
-        //        ModelState.AddModelError(ex.Property, ex.Message);
-        //    }
-        //    return View(order);
-        //}
         protected override void Dispose(bool disposing)
         {
-            //addressService.Dispose();
             base.Dispose(disposing);
         }
     }

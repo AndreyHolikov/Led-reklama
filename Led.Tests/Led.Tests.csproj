@@ -110,11 +110,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Areas\admin\Controllers\OwnerControllerTests.cs" />
-    <Compile Include="Led.DAL.Tests\LedDALTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="Services\AddressServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -135,6 +131,9 @@
       <Project>{95b35916-ada4-4efb-baa5-d17cad780686}</Project>
       <Name>Led.WEB</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

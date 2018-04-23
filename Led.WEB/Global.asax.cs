@@ -29,9 +29,6 @@ namespace Led.WEB
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //MappingProfile.InitializeAutoMapper();
-
-
             // внедрение зависимостей
             NinjectModule autoMapperModule = new AutoMapperModule();
             NinjectModule cityModule = new CityModule();
@@ -40,8 +37,6 @@ namespace Led.WEB
             NinjectModule serviceModule = new ServiceModule("DefaultConnection");
 
             var kernel = new StandardKernel(autoMapperModule, cityModule, ownerModule, displayModule, serviceModule);
-
-            //kernel.Get<CustomMapper>("Custom1Mapper").Initialize(x => x.AddProfile<AutoMapperCustom1Profile>());
 
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }

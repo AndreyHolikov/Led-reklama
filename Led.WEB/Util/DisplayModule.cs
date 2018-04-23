@@ -13,7 +13,6 @@ namespace Led.WEB.Util
         public override void Load()
         {
             Bind<IDisplayService>().To<DisplayService>();
-            //Bind<CustomMapper>().ToSelf().InSingletonScope().Named("Custom1Mapper");
         }
     }
 }
