@@ -30,8 +30,14 @@ namespace Led.WEB.Controllers
         public ActionResult Index()
         {
             var displays = dbService.GetAll();
-            ViewBag.Displays = mapper.Map<IEnumerable<DisplayDTO>, List<DisplayViewModel>>(displays);
-            
+            IEnumerable<DisplayViewModel> displayViewModels = mapper.Map<IEnumerable<DisplayDTO>, List<DisplayViewModel>>(displays);
+            ViewBag.Displays = displayViewModels;
+
+            //DisplayDTO display = displays.FirstOrDefault(d => d.Id == 1);
+
+            //DisplayViewModel displayViewModels = mapper.Map<DisplayDTO, DisplayViewModel>(display);
+            //ViewBag.Displays = displayViewModels;
+
             //}
             //ICalculatorService calculatorService = new CalculatorService(unitOfWork);
             //var calculators = new MapperConfiguration(cfg => cfg.CreateMap<CalculatorDTO, CityViewModel>()).CreateMapper();

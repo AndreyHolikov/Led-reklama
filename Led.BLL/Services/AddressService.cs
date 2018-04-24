@@ -12,7 +12,7 @@ using AutoMapper;
 
 namespace Led.BLL.Services
 {
-    public class AddressService : IAddressService
+    public class AddressService //: IAddressService
     {
         private IUnitOfWork Database { get; set; }
 

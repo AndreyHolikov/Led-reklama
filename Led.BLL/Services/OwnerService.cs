@@ -73,5 +73,25 @@ namespace Led.BLL.Services
         {
             Database.Dispose();
         }
+
+        public void Add(OwnerDTO item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(OwnerDTO item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public OwnerDTO Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

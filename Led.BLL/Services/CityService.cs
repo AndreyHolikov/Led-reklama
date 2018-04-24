@@ -64,5 +64,25 @@ namespace Led.BLL.Services
         {
             Database.Dispose();
         }
+
+        public void Add(CityDTO item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(CityDTO item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CityDTO Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

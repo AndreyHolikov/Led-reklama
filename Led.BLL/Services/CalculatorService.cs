@@ -12,7 +12,7 @@ using AutoMapper;
 
 namespace Led.BLL.Services
 {
-    public class CalculatorService : ICalculatorService
+    public class CalculatorService //: ICalculatorService
     {
         private IUnitOfWork Database { get; set; }
 

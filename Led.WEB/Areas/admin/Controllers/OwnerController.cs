@@ -47,7 +47,8 @@ namespace Led.WEB.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var owners = dbService.GetAll();
-            return View(mapperService.Map<IEnumerable<OwnerDTO>, List<OwnerViewModel>>(owners));
+            var model = mapperService.Map<IEnumerable<OwnerDTO>, List<OwnerViewModel>>(owners);
+            return View(model);
         }
 
         // GET: Owner/Details/5
@@ -57,16 +58,18 @@ namespace Led.WEB.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-                var owner = dbService.Get(id);
 
-                if (owner != null)
-                {
-                    return View(Mapper.Map<OwnerDTO, OwnerViewModel>(owner));
-                }
-                else
-                {
-                    return RedirectToAction("Index");
-                }
+            var owner = dbService.Get(id);
+
+            if (owner != null)
+            {
+                var model = mapperService.Map<OwnerDTO, OwnerViewModel>(owner);
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         // GET: Owner/Create
@@ -77,71 +80,85 @@ namespace Led.WEB.Areas.Admin.Controllers
 
         // POST: Owner/Create
         [HttpPost]
-        public ActionResult Create(OwnerViewModel owner)
+        public ActionResult Create(OwnerViewModel ownerViewModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                //IOwnerService db = new OwnerService(unitOfWork);
+                var model = mapperService.Map<OwnerViewModel, OwnerDTO>(ownerViewModel);
+                try
+                {
+                    dbService.Add(model);
 
                     //dbService.Owners.Add(owner);
                     //db.SaveChanges();
 
-                return RedirectToAction("Index");
-            }
-            catch
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View("Create");
+                }
+            } else
             {
-                return View();
+                return View("Create");
             }
         }
 
-        //// GET: Owner/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    Owner owner = db.Owners.Find(id);
+        // GET: Owner/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
 
-        //    if (owner != null)
-        //    {
-        //        return View(owner);
-        //    }
-        //    return RedirectToAction("Index");
-        //}
+            OwnerDTO ownerDTO = dbService.Get(id);
 
-        //// POST: Owner/Edit/5
-        //[HttpPost]
-        //public ActionResult Edit(Owner owner)
-        //{
-        //    db.Entry(owner).State = EntityState.Modified;
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+            if (ownerDTO != null)
+            {
+                var model = mapperService.Map<OwnerDTO, OwnerViewModel>(ownerDTO);
+                return View(model);
+            }
+            return RedirectToAction("Index");
+        }
 
-        //// GET: Owner/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    Owner owner = db.Owners.Find(id);
-        //    if (owner == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(owner);
-        //}
+        // POST: Owner/Edit/5
+        [HttpPost]
+        public ActionResult Edit(OwnerViewModel ownerViewModel)
+        {
+            var model = mapperService.Map<OwnerViewModel, OwnerDTO>(ownerViewModel);
+            dbService.Update(model);
+            //db.Entry(owner).State = EntityState.Modified;
+            //db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-        //// POST: Owner/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Owner owner = db.Owners.Find(id);
-        //    if (owner == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    db.Owners.Remove(owner);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        // GET: Owner/Delete/5
+        public ActionResult Delete(int id)
+        {
+            OwnerDTO ownerDTO = dbService.Delete(id); //db.Owners.Find(id);
+            if (ownerDTO == null)
+            {
+                return HttpNotFound();
+            }
+            var model = mapperService.Map<OwnerDTO, OwnerViewModel>(ownerDTO);
+            return View(model);
+        }
+
+        // POST: Owner/Delete/5
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            //Owner owner = db.Owners.Find(id);
+            OwnerDTO ownerDTO = dbService.Get(id);
+            if (ownerDTO == null)
+            {
+                return HttpNotFound();
+            }
+            dbService.Remove(ownerDTO.Id);
+            //db.Owners.Remove(owner);
+            //db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

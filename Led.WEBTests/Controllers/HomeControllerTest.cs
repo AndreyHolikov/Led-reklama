@@ -14,33 +14,51 @@ using AutoMapper;
 using System.Web.Mvc;
 using Led.DAL.Interfaces;
 using Led.DAL.Repositories;
+using Led.WEB.Mapping;
+using Led.BLL.Mapping;
+using Led.WEB.Util;
+using Led.WEB.Tests.Util;
 
 namespace Led.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest
     {
-        [TestMethod]
-        public void IndexViewModelNotNull()
+        private HomeController controller;
+        private ViewResult result;
+
+        [TestInitialize]
+        public void SetupContext()
         {
-            //IDisplayService serv, IMapper mapper)
-            // Arrange
+            // Arrange / organization
             var mockDisplayService = new Mock<IDisplayService>();
-            mockDisplayService.Setup(a => a.GetAll()).Returns(new List<DisplayDTO>() { new DisplayDTO() { Id = 1, Name = "name"} });
+            mockDisplayService.Setup(x => x.GetAll()).Returns(new List<DisplayDTO>{
+              new DisplayDTO{ Id = 1, Name="User#1", Address="Address", Label="lb", Image="", Owner=""},
+              new DisplayDTO{ Id = 2, Name="User#2", Address="Address", Label="lb", Image="", Owner=""},
+              new DisplayDTO{ Id = 3, Name="User#3", Address="Address", Label="lb", Image="", Owner=""},
+              new DisplayDTO{ Id = 4, Name="User#4", Address="Address", Label="lb", Image="", Owner=""}
+            });
 
-            var mockMapperService = new Mock<IMapper>();
-            mockMapperService.Setup(a => a.ServiceCtor);
+            // var mapper = config.CreateMapper();
+            // or
+            IMapper mapper = new Mapper( (new MapperConf()).CreateConfiguration() );
 
-            HomeController controller = new HomeController(mockDisplayService.Object, mockMapperService.Object);
+            controller = new HomeController(mockDisplayService.Object, mapper); 
 
-            // Act
-            ViewResult result = controller.Index() as ViewResult;
+            //var mapperMock = new Mock<IMapper>();
+            //mapperMock.Setup(m => m.Map<Foo, Bar>(It.IsAny<Foo>())).Returns(new Bar());
+        }
 
-            // Assert
-           // Assert.IsNotNull(result);
-            Assert.AreEqual("Index", result.ViewName);
-            //Assert.AreEqual("Hello world!", result.ViewBag.Message);
-            //Assert.IsNotNull(result.ViewBag.Displays);
+        [TestMethod]
+        public void Index_ViewModelNotNull()
+        {
+            // Arrange
+
+            // Act / action
+            result = controller.Index() as ViewResult;
+
+            // Assert 
+            Assert.IsNotNull(result.ViewBag.Displays);
         }
 
         //[TestMethod]
@@ -62,20 +80,20 @@ namespace Led.Tests.Controllers
         //[TestMethod]
         //public void IndexViewBagMessage()
         //{
-            // Arrange
-            //var mock = new Mock<IRepository<Address>>();
-            //mock.Setup(a => a.GetAll()).Returns(new List<Address>());
-            //HomeController controller = new HomeController(mock.Object);
+        // Arrange
+        //var mock = new Mock<IRepository<Address>>();
+        //mock.Setup(a => a.GetAll()).Returns(new List<Address>());
+        //HomeController controller = new HomeController(mock.Object);
 
-            //HomeController controller = new HomeController(new AddressService(new EFUnitOfWork(@"Data Source=PC-631\SQLEXPRESS;Initial Catalog=LedCatalog_04042018_DB;Integrated Security=True")));
-            //string expected = "В базе данных 1 объект";
+        //HomeController controller = new HomeController(new AddressService(new EFUnitOfWork(@"Data Source=PC-631\SQLEXPRESS;Initial Catalog=LedCatalog_04042018_DB;Integrated Security=True")));
+        //string expected = "В базе данных 1 объект";
 
-            // Act
-            //ViewResult result = controller.Index() as ViewResult;
-            //string actual = result.ViewBag.Message as string;
+        // Act
+        //ViewResult result = controller.Index() as ViewResult;
+        //string actual = result.ViewBag.Message as string;
 
-            // Assert
-            //Assert.AreEqual(expected, actual);
+        // Assert
+        //Assert.AreEqual(expected, actual);
         //}
 
 
