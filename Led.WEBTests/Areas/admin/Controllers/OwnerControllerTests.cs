@@ -19,16 +19,8 @@ using Led.WEB.Models;
 namespace Led.WEB.Areas.Admin.Controllers.Tests
 {
     [TestClass]
-    public class OwnerControllerTests: AdminControllerTests
+    public class OwnerControllerTests: BaseControllerTests
     {
-        //private Mock<IOwnerService> mockService;
-        //private IMapper mapper;
-        //private OwnerController controller;
-        //private int id;
-        //private string expected;
-        //private OwnerViewModel viewModel;
-        //private OwnerDTO DTO;
-
         [TestInitialize]
         public void SetupContext()
         {
@@ -42,9 +34,6 @@ namespace Led.WEB.Areas.Admin.Controllers.Tests
             this.expected = "Index";
             this.viewModel = new OwnerViewModel { Id = 1, Name = "1" };
             this.DTO = new OwnerDTO { Id = 1, Name = "1" };
-
-            //var mapperMock = new Mock<IMapper>();
-            //mapperMock.Setup(m => m.Map<Foo, Bar>(It.IsAny<Foo>())).Returns(new Bar());
         }
 
         [TestMethod]
@@ -61,11 +50,6 @@ namespace Led.WEB.Areas.Admin.Controllers.Tests
             controller = new OwnerController(mockService.Object, mapper);
 
             admin_Index_ModelNotNull();
-            //// Act / action
-            //var result = controller.Index() as ViewResult;
-
-            //// Assert 
-            //Assert.IsNotNull(result.Model);
         }
 
         [TestMethod]
@@ -76,11 +60,6 @@ namespace Led.WEB.Areas.Admin.Controllers.Tests
             controller = new OwnerController(mockService.Object, mapper);
 
             admin_Details_ModelNotNull();
-            //// Act / action
-            //var result = controller.Details(id) as ViewResult;
-
-            //// Assert 
-            //Assert.IsNot
         }
 
         [TestMethod]
@@ -95,12 +74,6 @@ namespace Led.WEB.Areas.Admin.Controllers.Tests
             controller.ModelState.AddModelError("Name", "Название не установлено");
 
             admin_CreatePostAction_ModelError();
-            //// act
-            //ViewResult result = controller.Create(viewModel) as ViewResult;
-
-            //// assert
-            //Assert.IsNotNull(result);
-            //Assert.AreEqual(expected, result.ViewName);
         }
 
         [TestMethod]
@@ -111,12 +84,6 @@ namespace Led.WEB.Areas.Admin.Controllers.Tests
             controller = new OwnerController(mockService.Object, mapper);
 
             admin_CreatePostAction_RedirectToIndexView();
-            //// Act
-            //RedirectToRouteResult result = controller.Create(viewModel) as RedirectToRouteResult;
-
-            //// Assert
-            //Assert.IsNotNull(result);
-            //Assert.AreEqual(expected, result.RouteValues["action"]);
         }
 
         [TestMethod]
@@ -127,12 +94,6 @@ namespace Led.WEB.Areas.Admin.Controllers.Tests
             controller = new OwnerController(mockService.Object, mapper);
 
             admin_EditGetAction_ViewModelNotNull();
-            //// Act / action
-            //var result = controller.Edit(id) as ViewResult;
-
-            //// Assert 
-            //Assert.IsNotNull(result);
-            //Assert.IsNotNull(result.Model);
         }
 
         [TestMethod]
@@ -143,12 +104,6 @@ namespace Led.WEB.Areas.Admin.Controllers.Tests
             controller = new OwnerController(mockService.Object, mapper);
 
             admin_EditPostAction_RedirectToIndexView();
-            //// Act
-            //RedirectToRouteResult result = controller.Edit(viewModel) as RedirectToRouteResult;
-
-            //// Assert
-            //Assert.IsNotNull(result);
-            //Assert.AreEqual(expected, result.RouteValues["action"]);
         }
 
         [TestMethod]
@@ -159,12 +114,6 @@ namespace Led.WEB.Areas.Admin.Controllers.Tests
             controller = new OwnerController(mockService.Object, mapper);
 
             admin_DeleteGetAction_ViewModelNotNull();
-            //// Act / action
-            //var result = controller.Delete(id) as ViewResult;
-
-            //// Assert 
-            //Assert.IsNotNull(result);
-            //Assert.IsNotNull(result.Model);
         }
 
         [TestMethod]
@@ -175,12 +124,6 @@ namespace Led.WEB.Areas.Admin.Controllers.Tests
             controller = new OwnerController(mockService.Object, mapper);
 
             admin_DeletePostAction_RedirectToIndexView();
-            //// Act / action
-            //RedirectToRouteResult result = controller.DeleteConfirmed(id) as RedirectToRouteResult;
-
-            //// Assert 
-            //Assert.IsNotNull(result);
-            //Assert.AreEqual(expected, result.RouteValues["Action"]);
         }
     }
 }
